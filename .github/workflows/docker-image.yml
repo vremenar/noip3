@@ -21,6 +21,8 @@ jobs:
         uses: ShiftLeftSecurity/scan-action@master
   build-and-push:
     runs-on: debian-latest
+    needs:
+      - vulerability-scan
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -56,6 +58,8 @@ jobs:
             ${{ env.DOCKER }}/vremenar/${{ env.IMAGENAME }}:${{ steps.date.outputs.date }}
   image-vulnerability-scan:
     runs-on: debian-latest
+    needs:
+      - build-and-push
     steps:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
