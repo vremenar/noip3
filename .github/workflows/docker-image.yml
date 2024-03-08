@@ -13,14 +13,14 @@ on:
 
 jobs:
   vulerability-scan:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Perform Scan
         uses: ShiftLeftSecurity/scan-action@master
   build-and-push:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     needs:
       - vulerability-scan
     steps:
@@ -57,7 +57,7 @@ jobs:
             ${{ env.DOCKER }}/vremenar/${{ env.IMAGENAME }}:latest
             ${{ env.DOCKER }}/vremenar/${{ env.IMAGENAME }}:${{ steps.date.outputs.date }}
   image-vulnerability-scan:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     needs:
       - build-and-push
     steps:
