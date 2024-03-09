@@ -5,7 +5,7 @@ RUN wget https://dmej8g5cpdyqd.cloudfront.net/downloads/noip-duc_3.0.0.tar.gz &&
 
 WORKDIR /noip-duc_3.0.0
 
-RUN cargo build --config net.git-fetch-with-cli=true --release
+RUN cargo build --release
 
 FROM alpine:latest
 
