@@ -1,4 +1,4 @@
-FROM rust:latest AS build
+FROM rust:alpine AS build
 
 RUN wget https://dmej8g5cpdyqd.cloudfront.net/downloads/noip-duc_3.0.0.tar.gz && \
     tar xf noip-duc_3.0.0.tar.gz
